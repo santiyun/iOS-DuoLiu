@@ -38,7 +38,7 @@ static id _manager;
     self = [super init];
     if (self) {
         //a967ac491e3acf92eed5e1b5ba641ab7
-        _rtcEngine = [TTTRtcEngineKit sharedEngineWithAppId:@"test900572e02867fab8131651339518" delegate:nil];
+        _rtcEngine = [TTTRtcEngineKit sharedEngineWithAppId:<#name#> delegate:nil];
         _me = [[TTTUser alloc] initWith:0];
     }
     return self;
