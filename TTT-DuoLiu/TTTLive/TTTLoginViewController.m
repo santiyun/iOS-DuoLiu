@@ -61,9 +61,9 @@
     [rtcEngine setClientRole:clientRole];
     [rtcEngine enableAudioVolumeIndication:200 smooth:3];
     BOOL swapWH = UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication.statusBarOrientation);
+    [rtcEngine enableVideo];
+    [rtcEngine muteLocalAudioStream:NO];
     if (clientRole == TTTRtc_ClientRole_Anchor) {
-        [rtcEngine enableVideo];
-        [rtcEngine muteLocalAudioStream:NO];
         TTTPublisherConfigurationBuilder *builder = [[TTTPublisherConfigurationBuilder alloc] init];
         NSString *pushURL = [@"rtmp://push.3ttech.cn/sdk/" stringByAppendingFormat:@"%@", _roomIDTF.text];
         //pull -- rtmp://pull.3ttech.cn/sdk/_roomIDTF.text
@@ -71,8 +71,6 @@
         [rtcEngine configPublisher:builder.build];
         [rtcEngine setVideoProfile:TTTRtc_VideoProfile_360P swapWidthAndHeight:swapWH];
     } else if (clientRole == TTTRtc_ClientRole_Broadcaster) {
-        [rtcEngine enableVideo];
-        [rtcEngine muteLocalAudioStream:NO];
         [rtcEngine setVideoProfile:TTTRtc_VideoProfile_120P swapWidthAndHeight:swapWH];
     }
     [rtcEngine joinChannelByKey:nil channelName:_roomIDTF.text uid:_uid joinSuccess:nil];
